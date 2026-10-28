@@ -3,7 +3,7 @@ title: "Lección 2 - Añadir valoraciones por estrellas: una mejora rápida"
 description: "Inicia tu primera sesión de agente en la aplicación GitHub Copilot, realiza un pequeño cambio en las tarjetas de los juegos y combínalo como tu primera solicitud de incorporación de cambios."
 authors:
   - geektrainer
-lastUpdated: 2026-07-09
+lastUpdated: 2026-10-22
 ---
 
 En la lección anterior recorriste el espacio de trabajo y utilizaste un chat rápido. Ahora es el momento de iniciar una **sesión de agente** y realizar el primer cambio en el proyecto. Será un cambio pequeño: los juegos ya tienen una valoración por estrellas en sus datos, pero las tarjetas de la página de inicio todavía no la muestran. Pedirás al agente que la muestre, revisarás el cambio y lo combinarás como tu primera solicitud de incorporación de cambios.
@@ -22,7 +22,7 @@ Cada juego de Tailspin Toys puede tener una valoración por estrellas, que ya ap
 
 ## Anatomía de una sesión
 
-Una **sesión** es una conversación con un agente que se ejecuta en su propio espacio de trabajo aislado. Cada sesión recibe un **árbol de trabajo y una rama de Git dedicados**, lo que permite ejecutar varias sesiones a la vez, por ejemplo, una para añadir una funcionalidad y otra para corregir un error, sin que sus cambios entren en conflicto. Las sesiones aparecen en la barra lateral agrupadas por repositorio; selecciona cualquiera de ellas para cambiar de sesión.
+Una **sesión** es una conversación con un agente que se ejecuta en su propio espacio de trabajo aislado. Cada sesión recibe un **árbol de trabajo y una rama de Git dedicados**, lo que permite ejecutar varias sesiones a la vez, por ejemplo, una para añadir una funcionalidad y otra para corregir un error, sin que sus cambios entren en conflicto. Las sesiones aparecen en la barra lateral agrupadas por repositorio; selecciona cualquiera para cambiar de sesión.
 
 Dentro de una sesión verás tres elementos: la **conversación** con el agente, la **actividad de las herramientas** del agente mientras explora y edita archivos, y la lista de **archivos modificados** con sus diferencias.
 
@@ -31,7 +31,7 @@ Dentro de una sesión verás tres elementos: la **conversación** con el agente,
 Vamos a iniciar una sesión nueva para comenzar a explorar el proyecto e implementar la funcionalidad. En una [lección anterior][prior-lesson] añadiste el proyecto desde su repositorio de GitHub. Crearemos una sesión nueva para ese repositorio y solicitaremos el cambio.
 
 1. Vuelve a la aplicación GitHub Copilot o ábrela.
-2. Selecciona **+** junto a **Projects**.
+2. Selecciona **+** en la parte superior de la barra lateral para iniciar una sesión.
 3. Selecciona `tailspin-toys` como repositorio.
 4. Elige **new working tree** y el modo **Interactive** debajo del cuadro de indicaciones. Utiliza la indicación siguiente para solicitar el cambio:
 
@@ -47,11 +47,11 @@ La aplicación Copilot comienza por crear un árbol de trabajo nuevo, una copia 
 
 Todos los cambios generados por IA deben revisarse antes de combinarlos, incluso los más pequeños. Vamos a explorar los cambios directamente en la aplicación Copilot.
 
-1. En la esquina superior derecha de la aplicación, selecciona **Toggle review panel**. Se abrirá la pantalla de diferencias con todos los cambios pendientes realizados por Copilot.
+1. En la esquina superior derecha de la aplicación, selecciona **Toggle review panel**. En el panel que se abre, selecciona **Changes** para ver los archivos modificados y sus diferencias.
 
     ![Barra de herramientas superior de la aplicación GitHub Copilot con una flecha que señala el botón Toggle review panel situado a la derecha de Create PR](../../../_images/app-2-review-panel.png)
 
-2. Deberías observar código añadido a `GameCard.astro`, el archivo principal que se utiliza para mostrar los detalles de los juegos. Debería ser similar al siguiente: un pequeño bloque que representa la valoración cuando existe y muestra "No rating yet" cuando `starRating` es `null`:
+2. Deberías observar código añadido a `GameCard.astro`, el archivo principal que se utiliza para mostrar los detalles de los juegos. Debería ser similar al siguiente: un pequeño bloque que muestra la valoración cuando existe y, si `starRating` es `null`, muestra "No rating yet":
 
    ```astro
    {game.starRating !== null ? (
@@ -93,12 +93,15 @@ Por supuesto, no basta con leer el código y dar por hecho que funciona. Vamos a
 
 ## Abrir y combinar tu primera solicitud de incorporación de cambios
 
+Has creado la funcionalidad. Ahora crearás una solicitud de incorporación de cambios (PR) para integrar el código en el proyecto existente.
+
 1. Selecciona **Create PR** en la esquina superior derecha.
 2. Si se solicita, selecciona **Sign in with your browser** y sigue las indicaciones para autenticarte.
-3. Copilot comenzará a crear la PR.
-4. Selecciona la burbuja **PR** situada justo encima del chat para abrir la solicitud en el panel de revisión. Puedes revisarla aquí según sea necesario.
-5. Cuando esté lista, selecciona **Ready to merge**.
-6. Selecciona **Merge pull request** en el nuevo cuadro de diálogo para combinar la solicitud.
+3. Si Copilot explica que la directiva del repositorio exige una incidencia vinculada antes de crear la PR, confirma que debe seguir ese proceso.
+4. Copilot comenzará a crear la PR.
+5. Selecciona la burbuja **PR** situada justo encima del chat para abrir la solicitud en el panel de revisión. Puedes revisarla aquí.
+6. Cuando esté lista, selecciona **Ready to merge**.
+7. Selecciona **Merge pull request** en el nuevo cuadro de diálogo para combinar la solicitud.
 
 ## Resumen y pasos siguientes
 
@@ -108,7 +111,7 @@ Has iniciado tu primera sesión de agente y publicado tu primer cambio. En concr
 - has indicado al agente que realice un cambio pequeño y específico en las tarjetas de los juegos.
 - has revisado el cambio en la vista de diferencias del espacio de trabajo.
 - has ejecutado la aplicación en local para confirmar la valoración por estrellas en el navegador.
-- has abierto la PR 1, revisado sus comprobaciones y autorizado explícitamente su combinación.
+- has abierto la PR 1, revisado sus comprobaciones y la has combinado explícitamente.
 
 A continuación, [partirás de la incidencia de filtrado y utilizarás los modos Plan y Autopilot][next-lesson] para desarrollar una funcionalidad más amplia.
 
